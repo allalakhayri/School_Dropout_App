@@ -1,0 +1,45 @@
+<div class="loading" *ngIf="!dataProcessed">
+  <div class="loader"></div>
+  <div class="loading-text">Please wait... <br> We are processing your data </div>
+</div>
+<div class="processing">
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Importance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of feature_importances | keyvalue">
+        <td>{{this.item}}</td>
+     
+      </tr>
+    </tbody>
+  </table>
+  <br>
+ 
+
+  <div class="time-taken">
+    <i class="fas fa-hourglass-half"></i>
+    <div class="time">
+      <span class="time-label">Time Taken:</span>
+      <span class="time-value">{{ time_taken }} ms</span>
+    </div>
+  </div>
+  
+    
+      <div class="comment-section">
+        <label for="comment">Add a comment:</label>
+        <textarea id="comment" rows="5" [(ngModel)]="comment"></textarea>
+      </div>
+        <div class="button-container">
+          <button class="comment-button" (click)="submitForm()" [disabled]="error || !dataProcessed">Submit Comment</button>
+          <button class="next-button" routerLink="/" [disabled]="!dataProcessed">NEXT</button>
+          <button class="back-button" routerLink="/datavisualisation">Back</button>
+          <button class="retry-button" (click)="retry()">Try Again</button>
+        </div>
+    
+        
+        <div *ngIf="error" class="error">{{ error }}</div>
+       

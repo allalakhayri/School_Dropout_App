@@ -1,0 +1,115 @@
+<div *ngIf="dataPreprocessed" class="preprocessing-container">
+  <h3 class="section-title">Preprocessed Data:</h3>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th *ngFor="let header of responseJSON.columns">{{header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of responseJSON.data ; let i = index">
+        <th>{{i}}</th>
+        <td *ngFor="let cell of row">{{cell}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3 class="section-title">Statistics:</h3>
+  <table class="stats-table">
+    <tr>
+        <th>Statistic</th>
+        <th>Values</th>
+  
+    </tr>
+    <tr>
+        <td>Minimum</td>
+        <td>{{ formatted_stats['Minimum'] }}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Maximum</td>
+        <td>{{ formatted_stats['Maximum'] }}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Standard Deviation</td>
+        <td>{{ formatted_stats['Standard Deviation'] }}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Median</td>
+        <td>{{ formatted_stats['Median'] }}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Range</td>
+        <td>{{ formatted_stats['Range'] }}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Null Counts</td>
+        <td>{{ formatted_stats['Null Counts'] }}</td>
+        <td></td>
+    </tr>
+  </table>
+ 
+  
+
+  <h3 class="section-title">Categorical Columns:</h3>
+  <ul class="column-list">
+    <li *ngFor="let col of cat_cols">{{col}}</li>
+  </ul>
+
+  <h3 class="section-title">Numerical Columns:</h3>
+  <ul class="column-list">
+    <li *ngFor="let col of num_cols">{{col}}</li>
+  </ul>
+  <div class="visualization">
+    <h3 class="section-title">Outliers:</h3>
+<table class="outlier-table">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Outlier Value</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let outlier of outliers | keyvalue">
+      <td>{{ outlier.key }}</td>
+      <td>{{ outlier.value}}</td>
+    </tr>
+    <div *ngFor="let image of images.slice(0, 1)" class="image-container">
+      <img [src]="'http://localhost:5000/static/' + image" alt="plot" class="outlier-image">
+    </div>  
+  </tbody>
+</table>
+
+  </div>
+<div class="time-taken">
+  <i class="fas fa-hourglass-half"></i>
+  <div class="time">
+    <span class="time-label">Time Taken:</span>
+    <span class="time-value">{{ time_taken }} ms</span>
+  </div>
+</div>
+
+  
+    <div class="comment-section">
+      <label for="comment">Add a comment:</label>
+      <textarea id="comment" rows="5" [(ngModel)]="comment"></textarea>
+    </div>
+      <div class="button-container">
+        <button class="comment-button" (click)="submitForm()" [disabled]="error || !dataPreprocessed">Submit Comment</button>
+        <button class="next-button" routerLink="/datavisualisation" [disabled]="!dataPreprocessed">NEXT</button>
+        <button class="back-button" routerLink="/datapreprocessing">Back</button>
+        <button class="retry-button" (click)="retry()">Try Again</button>
+      </div>
+  
+      
+      <div *ngIf="error" class="error">{{ error }}</div>
+  </div>
+  
+
+  

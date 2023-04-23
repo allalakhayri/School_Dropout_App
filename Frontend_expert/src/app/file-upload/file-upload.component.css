@@ -1,0 +1,98 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to top,#c9c9ff 50%,#6e6ef6 100%) no-repeat;
+
+}
+
+.form-container {
+  border: 2px solid #7f9cf5;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  text-align: center;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #7f9cf5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.file-label:hover {
+  background-color: #6b86f1;
+}
+
+.file-input {
+  display: none;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.upload-button {
+  background-color: #7f9cf5;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #6b86f1;
+}
+
+.next-button {
+  background-color: #009688;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+  background-color: #00796b;
+}
+
+.back-button {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #c62828;
+}
+
+.response-message {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e6e6e6;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
